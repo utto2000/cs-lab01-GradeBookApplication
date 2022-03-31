@@ -26,14 +26,8 @@ namespace GradeBook.GradeBooks
                     return 'C';
                 else if (grades[(step * 4) - 1] <= averageGrade)
                     return 'D';
-                else if (grades[(step * 5) - 1] <  averageGrade)
+                else if (grades[(step * 5) - 1] < averageGrade)
                     return 'F';
-
-
-
-
-
-
 
             }
             else
@@ -42,8 +36,30 @@ namespace GradeBook.GradeBooks
             }
             return base.GetLetterGrade(averageGrade);
         }
-       
-        
-        
+        public override void CalculateStatistics()
+        {
+            if(Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+            }
+            else
+            {
+                base.CalculateStatistics();
+            }
+            
+        }
+        public override void CalculateStudentStatistics(string name)
+        {
+            if (Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+            }
+            else {
+                base.CalculateStudentStatistics(name);
+            }
+        }
+
+
     }
+    
 }
