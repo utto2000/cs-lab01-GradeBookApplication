@@ -7,7 +7,7 @@ namespace GradeBook.GradeBooks
 {
     public class RankedGradeBook : BaseGradeBook
     {
-        public RankedGradeBook(string name) : base(name)
+        public RankedGradeBook(string name,bool IsWeighted) : base(name, IsWeighted)
         {
             Type = Enums.GradeBookType.Ranked;
         }
@@ -26,15 +26,16 @@ namespace GradeBook.GradeBooks
                     return 'C';
                 else if (grades[(step * 4) - 1] <= averageGrade)
                     return 'D';
-                else if (grades[(step * 5) - 1] < averageGrade)
+                else
                     return 'F';
+               
 
             }
             else
             {
                 throw new InvalidOperationException();
             }
-            return base.GetLetterGrade(averageGrade);
+           
         }
         public override void CalculateStatistics()
         {
